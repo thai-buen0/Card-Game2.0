@@ -1,0 +1,85 @@
+/* Resetando alguns estilos padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Estilo para o corpo da página */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  /* Contêiner de cards */
+  .game-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    width: 80%;
+    max-width: 1200px;
+  }
+  
+  /* Estilo dos cards */
+  .card {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    perspective: 1000px; /* Cria a profundidade para o efeito 3D */
+  }
+  
+  .card .front, .card .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    border-radius: 8px;
+    transition: transform 0.3s;
+    backface-visibility: hidden;
+    color: #fff;
+    text-align: center;
+  }
+  
+  /* Frente do card - cor de fundo e texto */
+  .card .front {
+    background-color: #3498db;
+  }
+  
+  .card .back {
+    background-color: #2ecc71;
+    transform: rotateY(180deg); /* A resposta começa virada */
+  }
+  
+  /* Efeito de virar o card ao passar o mouse (desktop) ou ao clicar (mobile) */
+  .card:hover .front {
+    transform: rotateY(180deg);
+  }
+  
+  .card:hover .back {
+    transform: rotateY(360deg);
+  }
+  
+  /* Estilos responsivos para dispositivos móveis */
+  @media (max-width: 768px) {
+    .game-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  
+    .card:active .front {
+      transform: rotateY(180deg); /* Ao clicar no mobile */
+    }
+  
+    .card:active .back {
+      transform: rotateY(360deg); /* Exibe a resposta */
+    }
+  }
+  
